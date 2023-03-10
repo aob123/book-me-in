@@ -1,0 +1,76 @@
+.time {
+  display: grid;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.time-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.time-header p {
+  margin: 0;
+}
+
+.time-header Button {
+  width: 80px;
+}
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.time-scale {
+  display: grid;
+  text-align: center;
+  z-index: 9;
+  position: relative;
+  top: -10px;
+
+  /* background-color: red; */
+}
+
+.time-scale > p {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.time-markers {
+  display: grid;
+  text-align: center;
+
+  /* border-right: 2px solid grey; */
+}
+
+.time-marker {
+  margin: 0;
+  padding: 0;
+  font-size: 0.5px;
+  /* height: 2px; */
+  /* border-top: 1px solid rgb(194, 194, 194); */
+}
+
+.time-markers :nth-child(odd) {
+  /* border-top: 2px solid rgb(194, 194, 194); */
+  background-color: rgb(67, 67, 67);
+  height: 2px;
+}
+.time-markers :nth-child(even) {
+  /* border-top: 1px solid rgb(204, 204, 204); */
+  background-color: rgb(182, 182, 182);
+  height: 2px;
+}
+
+.time-markers :last-child {
+  background-color: transparent;
+  /* display: none; */
+}
