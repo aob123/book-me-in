@@ -15,7 +15,7 @@ const Header = ({ categories }) => {
           style={{ backgroundColor: `${colors[index]}` }}
           className={`headerGridColumn column-${index}`}
         >
-          {category.name}
+          <h1>{category.name}</h1>
         </div>
       ))}
     </div>

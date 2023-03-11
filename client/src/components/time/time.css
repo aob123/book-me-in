@@ -2,6 +2,7 @@
   display: grid;
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  z-index: 10;
 }
 
 .time-header {
@@ -10,7 +11,12 @@
   align-items: center;
   justify-content: center;
   grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  /* grid-row: 1 / 2; */
+  position: sticky;
+  top: 0;
+  height: 100px;
+  background-color: white;
+  z-index: 0;
 }
 
 .time-header p {
@@ -31,7 +37,7 @@
 .time-scale {
   display: grid;
   text-align: center;
-  z-index: 9;
+  /* z-index: 1; */
   position: relative;
   top: -10px;
 

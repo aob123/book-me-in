@@ -5,7 +5,7 @@ main {
   margin: 0;
   display: grid;
   grid-template-columns: 5fr 95fr;
-  grid-template-rows: 100px 95fr;
+  /* grid-template-rows: 100px 95fr; */
   column-gap: 10px;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
@@ -84,4 +84,9 @@ Button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.headerContainer {
+  width: 100vw;
+  z-index: 1;
 }
