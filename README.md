@@ -44,3 +44,10 @@ The mongostring in index.js can also be edited to use mongodb atlas instead of a
 ## Usage
 
 After the initial setup and both the server and client are running, the client can be accessed from a browser at localhost:5173
+
+## Project status
+
+This project is under development and has reached the stage where it works. The code needs to be refactored and the following features are to be implemented:
+
+- Booking validation, currently not implemented which means two or more bookings can be made at the same time.
+- Seperate page to edit settings (add/remove categories and adjust open hours)
