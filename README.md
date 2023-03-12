@@ -64,6 +64,6 @@ Other helpful sources i have used include youtube channels:
 
 Also official documentation for socket io, react, mongodb and dayjs.
 
-### License
+## License
 
 This project is licensed under the terms of the [MIT licensen](./LICENSE.md)
