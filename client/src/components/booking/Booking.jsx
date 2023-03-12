@@ -9,18 +9,14 @@ const socket = io.connect("http://localhost:3000");
 const Booking = ({ booking, hoursOpen, color }) => {
   const { startRow, endRow } = TimeToGridHelper(booking, hoursOpen);
 
-  const deleteBooking = (id) => {
-    axios
-      .delete(`http://localhost:3000/api/delete/${id}`)
-      .then((res) => {
-        // setBookings((prevBookings) =>
-        //   prevBookings.filter((booking) => booking._id !== id)
-        // );
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+  const deleteBooking = async (id) => {
+    try {
+      const response = axios.delete(`http://localhost:3000/api/delete/${id}`);
+      console.log(response);
+    } catch (error) {
+      console.log(error.response);
+    }
+
     socket.emit("delete_booking", id);
   };
   /*  ---------------------------------------------------------- */
@@ -43,12 +39,7 @@ const Booking = ({ booking, hoursOpen, color }) => {
       }}
     >
       <div className="bookingSlotHeader">
-        <p>
-          {/* {booking.start.hour} : {booking.start.min} */}
-          {`${start.format("HH:mm")} - ${end.format("HH:mm")}`}
-
-          {/* {booking.end.hour}: {booking.end.min} */}
-        </p>
+        <p>{`${start.format("HH:mm")} - ${end.format("HH:mm")}`}</p>
         <AiOutlineClose
           value={booking._id}
           onClick={() => deleteBooking(booking._id)}
@@ -57,7 +48,6 @@ const Booking = ({ booking, hoursOpen, color }) => {
       <div className="bookingSlotName">
         <p>{booking?.name}</p>
       </div>
-      {/* <div className="bookingSlotTime"></div> */}
     </div>
   );
 };

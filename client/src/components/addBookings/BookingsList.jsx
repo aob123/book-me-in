@@ -1,22 +1,14 @@
-import { Button } from "react-bootstrap";
 import io from "socket.io-client";
 const socket = io.connect("http://localhost:3000");
 import BookingListItem from "./bookingListItem";
 import axios from "axios";
 
 const BookingsList = ({ bookings }) => {
-  const deleteBooking = (id) => {
-    axios
-      .delete(`http://localhost:3000/api/delete/${id}`)
-      .then((res) => {
-        // setBookings((prevBookings) =>
-        //   prevBookings.filter((booking) => booking._id !== id)
-        // );
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+  const deleteBooking = async (id) => {
+    const response = await axios.delete(
+      `http://localhost:3000/api/delete/${id}`
+    );
+
     socket.emit("delete_booking", id);
   };
 

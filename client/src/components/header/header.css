@@ -1,20 +1,31 @@
+header {
+  width: 100vw;
+  display: grid;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+  grid-template-columns: 5fr 95fr;
+  position: sticky;
+  top: 0;
+  z-index: 0;
+  gap: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  height: 100px;
+
+  background-color: transparent;
+}
+
 .header {
-  /* background-color: rgba(255, 76, 225, 0.551); */
   grid-column: 2 / 3;
   grid-row: 1 / 2;
   display: grid;
   color: black;
-  /* border-bottom: 1px solid grey; */
   column-gap: 5px;
   margin-right: 10px;
-  position: sticky;
-  top: 0;
-  height: 100px;
 }
 
 .header * {
   font-size: large;
-  /* position: absolute; */
   top: 0;
 }
 
@@ -24,9 +35,9 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  /* border-radius: 0 0 5px 5px; */
+  border: 1px solid black;
   font-size: larger;
-  /* border-right: 1px solid grey; */
+  box-shadow: 2px 2px 8px rgb(145, 145, 145);
   background-color: rgb(246, 246, 246);
   text-align: center;
   overflow: hidden;
@@ -36,6 +47,30 @@
   border-radius: 5px;
 }
 
-/* .column-5 {
-  background-color: rgb(255, 144, 144);
-} */
+.headerButton {
+  grid-column: 1 / 2;
+  background-color: rgb(0, 106, 255);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin-left: 5px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.headerButton:hover {
+  transition: 0.125s;
+  background-color: rgb(0, 86, 165);
+}
+
+.headerButton:active {
+  background-color: rgb(0, 55, 107);
+}
+
+.headerButton p {
+  margin: 0;
+  padding: 0;
+}

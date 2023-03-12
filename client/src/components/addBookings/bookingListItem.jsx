@@ -17,7 +17,6 @@ const bookingListItem = ({ booking, deleteBooking }) => {
       <p>{booking.category.name}</p>
       <p>{start.format("HH:mm")}</p>
       <p>{end.format("HH:mm")}</p>
-      {/* <p>{booking._id}</p> */}
 
       <Button>Edit</Button>
       <Button value={booking._id} onClick={() => deleteBooking(booking._id)}>

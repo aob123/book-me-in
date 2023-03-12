@@ -21,15 +21,13 @@ function App() {
   const [date, setDate] = useState(0);
 
   /* ---------------------------------------------------------- */
-  //Set date
-
-  // console.log("APP BOOKIGNS", bookings);
+  //Set date: gets the day of the week (0 - 6)
 
   useEffect(() => {
     let getDate = dayjs().day();
     let today = getDate++;
-    setDate(today);
-    // console.log("APP", today);
+    // setDate(today);
+    setDate(6);
   }, []);
 
   /* ---------------------------------------------------------- */
@@ -62,14 +60,15 @@ function App() {
   }, [socket]);
 
   /* ----------------------------------------------------------- */
-  //Handle view
+  //Handle view: Changes the view between add bookings and
+  //view bookings page
 
   const handleView = () => {
     setView(!view);
   };
 
   /* ----------------------------------------------------------- */
-  //Display closed message when hours are null
+  //Display closed message when hours (in OpenHours) are null
 
   if (OpenHours[date].open.hour === null) {
     return <ClosedPage OpenHours={OpenHours} />;

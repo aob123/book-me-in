@@ -2,26 +2,18 @@ import { useEffect, useState } from "react";
 import "./bookings.css";
 import Booking from "../booking/Booking";
 import { OpenHours } from "../../settings/OpenHours";
-import TimeHelper, { openHours } from "../../helpers/TimeHelper";
+import { openHours } from "../../helpers/TimeHelper";
 import { colors } from "../../settings/Colors";
-import dayjs from "dayjs";
 
 const Bookings = ({ categories, bookings, date }) => {
   const [rows, setRows] = useState();
   const [hoursOpen, setHoursOpen] = useState([]);
   const columns = categories.length;
-  // const { date } = TimeHelper();
-
-  // console.log("BOOOOOKKKKKIIIIINGS", bookings);
 
   /*  ---------------------------------------------------------- */
 
-  //Set rows dependent on opening hours
   useEffect(() => {
     const { list } = openHours(OpenHours[date]);
-
-    // const { list } = openHours(OpenHours[5]);
-    // console.log("HBOOKINGS", list);
     setHoursOpen(list);
     setRows(list.length * 60);
   }, []);
@@ -46,7 +38,6 @@ const Bookings = ({ categories, bookings, date }) => {
               gridTemplateRows: `repeat(${rows}, 2fr)`,
             }}
           >
-            {/* <div className="bookingDiv"> */}
             {bookings.map((booking, index) =>
               booking?.category.name === category.name ? (
                 <Booking

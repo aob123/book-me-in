@@ -38,8 +38,6 @@ export default function TimeToGridHelper(booking, openHours) {
     }
   }
 
-  // console.log(booking.category, startRow, endRow);
-
   return { startRow, endRow };
 }
 

@@ -1,28 +1,20 @@
 import "./time.css";
 import { useState, useEffect } from "react";
-import TimeHelper, {
-  makeMarkers,
-  makeScale,
-  openHours,
-} from "../../helpers/TimeHelper";
+import { makeMarkers, makeScale, openHours } from "../../helpers/TimeHelper";
 import { OpenHours } from "../../settings/OpenHours";
 import { makeRows } from "../../helpers/TimeToGridHelper";
-import dayjs from "dayjs";
 
 const Time = ({ date }) => {
   const [scale, setScale] = useState([]);
   const [markers, setMarkers] = useState([]);
   const [hoursOpen, setHoursOpen] = useState([]);
   const [rows, setRows] = useState(0);
-  // const { date } = TimeHelper();
 
   /*  ---------------------------------------------------------- */
 
   //Set rows dependent on opening hours
   useEffect(() => {
     const { list } = openHours(OpenHours[date]);
-    // const { list } = openHours(OpenHours[5]);
-    // // console.log("H", list);
     setHoursOpen(list);
     setRows(list.length * 60);
   }, []);
@@ -41,7 +33,6 @@ const Time = ({ date }) => {
   //Generates the grid rows for hours and minutes within the scale (minutes, number of intervals) for markers and scale.
   const rowsForHours = makeRows(60, hoursOpen.length);
   const rowsForMinutes = makeRows(30, hoursOpen.length * 2);
-  // console.log("ROWS FOR HOURS", rowsForHours);
 
   /*  ---------------------------------------------------------- */
 
@@ -75,9 +66,7 @@ const Time = ({ date }) => {
                   rowsForMinutes[index + 1]
                 }`,
               }}
-            >
-              {/* {minute} */}
-            </p>
+            ></p>
           ))}
         </div>
       </div>

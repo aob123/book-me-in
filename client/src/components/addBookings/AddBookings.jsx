@@ -9,25 +9,16 @@ dayjs.extend(isBetween);
 import { Button, Form } from "react-bootstrap";
 
 const AddBookings = ({ categories, bookings }) => {
-  const [alreadyBooked, setAlreadyBooked] = useState(false);
-  const [booking, setBooking] = useState({
-    // name: undefined,
-    // category: {},
-    // start: {},
-    // end: {},
-  });
-
-  // console.log("ADD BOOKINGS", bookings);
+  const [booking, setBooking] = useState({});
 
   /*  ---------------------------------------------------------- */
 
   const addToDB = async () => {
     try {
-      const response = await axios.post(
+      return (response = await axios.post(
         "http://localhost:3000/api/post",
         booking
-      );
-      // console.log("REPSONSE", response);
+      ));
     } catch (error) {
       if (error.response) {
         console.log(error.response.data);
@@ -39,14 +30,12 @@ const AddBookings = ({ categories, bookings }) => {
     }
 
     socket.emit("add_booking", booking);
-    // console.log("SINGLE BOOKING", booking);
   };
 
   /*  ---------------------------------------------------------- */
 
   //Handlers for inputs
   const handleName = (e) => {
-    // setName(e.target.value);
     setBooking({ ...booking, name: e.target.value });
   };
 

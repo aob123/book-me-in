@@ -7,13 +7,12 @@ import dayjs from "dayjs";
 
 const BookingPage = ({ handleView, bookings, categories, date }) => {
   return (
-    <main className="view-bookings">
-      <div className="time-header">
-        <Button onClick={handleView}>Booking</Button>
+    <main className="booking-page">
+      <Header categories={categories} handleView={handleView} />
+      <div className="bookingPageGrid">
+        <Time date={date} />
+        <Bookings categories={categories} bookings={bookings} date={date} />
       </div>
-      <Header categories={categories} />
-      <Time date={date} />
-      <Bookings categories={categories} bookings={bookings} date={date} />
     </main>
   );
 };
