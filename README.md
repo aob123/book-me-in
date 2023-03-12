@@ -55,12 +55,12 @@ This project is under development and has reached the stage where it works. The 
 
 ## Sources
 
-All things have a source of inspiration and in the case of this project the main inspiration is ["Pantburk](https://github.com/indianpojken/pantburk), check it out!
+All things have a source of inspiration and in the case of this project the main inspiration is [Pantburk](https://github.com/indianpojken/pantburk), check it out!
 
 Other helpful sources i have used include youtube channels:
 
 - [Pedro Tech (socket io & react)](https://www.youtube.com/watch?v=djMy4QsPWiI)
-- [Traversy media](https://www.youtube.com/watch?v=jD7FnbI76Hg)
+- [Traversy media (socket io)](https://www.youtube.com/watch?v=jD7FnbI76Hg)
 
 Also official documentation for socket io, react, mongodb and dayjs.
 
