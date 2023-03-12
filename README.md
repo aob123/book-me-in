@@ -66,4 +66,4 @@ Also official documentation for socket io, react, mongodb and dayjs.
 
 ## License
 
-This project is licensed under the terms of the [MIT licensen](./LICENSE.md)
+This project is licensed under the terms of the [MIT license](./LICENSE.md)
