@@ -13,6 +13,7 @@ The project has been created with:
 - socket.io
 - MongoDB
 - Mongoose
+- Dayjs
 
 ## Setup
 
@@ -51,3 +52,18 @@ This project is under development and has reached the stage where it works. The 
 
 - Booking validation, currently not implemented which means two or more bookings can be made at the same time.
 - Seperate page to edit settings (add/remove categories and adjust open hours)
+
+## Sources
+
+All things have a source of inspiration and in the case of this project the main inspiration is ["Pantburk](https://github.com/indianpojken/pantburk), check it out!
+
+Other helpful sources i have used include youtube channels:
+
+- [Pedro Tech (socket io & react)](https://www.youtube.com/watch?v=djMy4QsPWiI)
+- [Traversy media](https://www.youtube.com/watch?v=jD7FnbI76Hg)
+
+Also official documentation for socket io, react, mongodb and dayjs.
+
+### License
+
+This project is licensed under the terms of the [MIT licensen](./LICENSE.md)
