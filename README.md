@@ -4,6 +4,8 @@
 
 Book-me-in is a web based booking application / scheduler. It has been created to assist staff and visitors at a youth center to keep track of the different activities of which the youths wish to partake in. The web app is suited for any situation where there is a need to organise different tasks or activities on a daily basis.
 
+![Screenshot of bookings](./client/src/assets/book-me-in.png)
+
 ## Technologies
 
 The project has been created with:
