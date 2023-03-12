@@ -27,7 +27,7 @@ function App() {
     let getDate = dayjs().day();
     let today = getDate++;
     // setDate(today);
-    setDate(6);
+    setDate(today);
   }, []);
 
   /* ---------------------------------------------------------- */

@@ -80,11 +80,20 @@ Button {
 
 .closedMessage {
   height: 100vh;
-  background-color: red;
+  background-color: rgb(62, 62, 62);
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.hours {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .headerContainer {
