@@ -3,21 +3,23 @@ import TimeToGridHelper from "../../helpers/TimeToGridHelper";
 import dayjs from "dayjs";
 import { AiOutlineClose } from "react-icons/ai";
 import axios from "axios";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
+import { io } from "socket.io-client";
+const URL = "http://127.0.0.1:3001";
+const socket = io(URL);
 
 const Booking = ({ booking, hoursOpen, color }) => {
   const { startRow, endRow } = TimeToGridHelper(booking, hoursOpen);
 
   const deleteBooking = async (id) => {
     try {
-      const response = axios.delete(`http://localhost:3000/api/delete/${id}`);
+      const response = await axios.delete(
+        `http://localhost:3001/api/delete/${id}`
+      );
       console.log(response);
+      socket.emit("delete_booking", id);
     } catch (error) {
       console.log(error.response);
     }
-
-    socket.emit("delete_booking", id);
   };
   /*  ---------------------------------------------------------- */
   //Format time

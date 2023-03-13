@@ -21,8 +21,6 @@ const useAxios = (url) => {
     getData();
   }, [url]);
 
-  // console.log("DATA HOOK", data);
-
   return { data, error, loading };
 };
 

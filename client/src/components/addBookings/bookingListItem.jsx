@@ -14,6 +14,7 @@ const bookingListItem = ({ booking, deleteBooking }) => {
   return (
     <div className="bookingRow">
       <p>{booking.name}</p>
+      <p>{booking._id}</p>
       <p>{booking.category.name}</p>
       <p>{start.format("HH:mm")}</p>
       <p>{end.format("HH:mm")}</p>

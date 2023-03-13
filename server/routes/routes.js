@@ -37,7 +37,7 @@ router.get("/getAll", async (req, res) => {
         $gte: today,
       },
     });
-    console.log(bookings);
+    // console.log("GET ALL", bookings);
     res.json(bookings);
   } catch (error) {
     res.status(500).json({ message: error.message });

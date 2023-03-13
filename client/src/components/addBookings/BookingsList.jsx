@@ -1,15 +1,20 @@
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
 import BookingListItem from "./bookingListItem";
 import axios from "axios";
+import { io } from "socket.io-client";
+const URL = "http://127.0.0.1:3001";
+const socket = io(URL);
 
 const BookingsList = ({ bookings }) => {
   const deleteBooking = async (id) => {
-    const response = await axios.delete(
-      `http://localhost:3000/api/delete/${id}`
-    );
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/api/delete/${id}`
+      );
 
-    socket.emit("delete_booking", id);
+      socket.emit("delete_booking", id);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   /*  ---------------------------------------------------------- */

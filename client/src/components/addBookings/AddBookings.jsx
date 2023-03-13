@@ -2,11 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
-import io from "socket.io-client";
 import "./addbooking.css";
-const socket = io.connect("http://localhost:3000");
 dayjs.extend(isBetween);
 import { Button, Form } from "react-bootstrap";
+// import { socket } from "../../socket";
+import { io } from "socket.io-client";
+const URL = "http://127.0.0.1:3001";
+const socket = io(URL);
 
 const AddBookings = ({ categories, bookings }) => {
   const [booking, setBooking] = useState({});
@@ -15,10 +17,11 @@ const AddBookings = ({ categories, bookings }) => {
 
   const addToDB = async () => {
     try {
-      return (response = await axios.post(
-        "http://localhost:3000/api/post",
+      const response = await axios.post(
+        "http://localhost:3001/api/post",
         booking
-      ));
+      );
+      console.log("Added to db");
     } catch (error) {
       if (error.response) {
         console.log(error.response.data);
@@ -28,7 +31,6 @@ const AddBookings = ({ categories, bookings }) => {
         console.log("Error", error.message);
       }
     }
-
     socket.emit("add_booking", booking);
   };
 

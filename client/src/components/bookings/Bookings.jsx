@@ -5,7 +5,7 @@ import { OpenHours } from "../../settings/OpenHours";
 import { openHours } from "../../helpers/TimeHelper";
 import { colors } from "../../settings/Colors";
 
-const Bookings = ({ categories, bookings, date }) => {
+const Bookings = ({ categories, bookings, date, socket }) => {
   const [rows, setRows] = useState();
   const [hoursOpen, setHoursOpen] = useState([]);
   const columns = categories.length;
@@ -46,6 +46,7 @@ const Bookings = ({ categories, bookings, date }) => {
                   hoursOpen={hoursOpen}
                   categories={categories}
                   color={colors[catindex]}
+                  socket={socket}
                 />
               ) : (
                 ""
