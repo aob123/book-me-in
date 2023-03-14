@@ -11,6 +11,8 @@ header {
   padding-top: 5px;
   padding-bottom: 10px;
   height: 100px;
+  margin-bottom: 10px;
+  backdrop-filter: blur(20px);
 
   /* background-color: rgb(52, 52, 52); */
 }
@@ -50,6 +52,7 @@ header {
   font-size: small;
   font-weight: 500;
   color: white;
+  margin-top: 10px;
 }
 
 .headerIcon {
