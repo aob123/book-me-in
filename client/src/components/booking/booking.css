@@ -10,13 +10,14 @@
 .bookingSlotHeader {
   grid-row: 1 / 2;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
   border-bottom: ridge 2px black;
   color: white;
-  width: 100%;
+  /* width: 100%; */
+  font-size: smaller;
 }
 
 .bookingSlot svg:hover {

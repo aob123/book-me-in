@@ -62,10 +62,6 @@ header {
   flex: 1;
 }
 
-svg {
-  width: 100%;
-}
-
 .headerButton {
   grid-column: 1 / 2;
   background-color: rgb(0, 106, 255);

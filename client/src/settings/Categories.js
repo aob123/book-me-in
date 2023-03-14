@@ -73,7 +73,7 @@ export const categories = [
   {
     id: 9,
     name: "Studio",
-    duration: 60,
+    duration: 120,
     color: "#98A1FD",
     icon: headphones,
   },
