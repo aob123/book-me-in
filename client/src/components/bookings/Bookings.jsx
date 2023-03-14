@@ -45,7 +45,7 @@ const Bookings = ({ categories, bookings, date, socket }) => {
                   booking={booking}
                   hoursOpen={hoursOpen}
                   categories={categories}
-                  color={colors[catindex]}
+                  color={category.color}
                   socket={socket}
                 />
               ) : (

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap");
+
 html,
 body {
   /* display: flex; */
@@ -7,4 +9,5 @@ body {
   height: 100vh;
   padding: 0;
   margin: 0;
+  font-family: "Golos Text", sans-serif;
 }

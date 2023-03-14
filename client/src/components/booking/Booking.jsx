@@ -12,9 +12,7 @@ const Booking = ({ booking, hoursOpen, color }) => {
 
   const deleteBooking = async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3001/api/delete/${id}`
-      );
+      const response = await axios.delete(`${URL}/api/delete/${id}`);
       console.log(response);
       socket.emit("delete_booking", id);
     } catch (error) {

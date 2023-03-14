@@ -18,11 +18,10 @@ import "./App.css";
 function App() {
   // const url = "http://localhost:3000/api/getAll";
   const url = "http://localhost:3001/api/getAll";
-  const { data } = useAxios(url);
-  const [view, setView] = useState(false);
   const [bookings, setBookings] = useState([]);
+  const { data, updateData } = useAxios(url);
+  const [view, setView] = useState(false);
   const [date, setDate] = useState(0);
-  const [isConnected, setIsConnected] = useState(socket.connected);
   console.log(data);
   console.log(bookings);
   /* ---------------------------------------------------------- */
@@ -37,7 +36,6 @@ function App() {
 
   /* ---------------------------------------------------------- */
   //Set bookings
-
   useEffect(() => {
     setBookings(data);
   }, [data]);
@@ -46,24 +44,15 @@ function App() {
   //Socket events
 
   useEffect(() => {
-    socket.connect();
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
     socket.on("recieve_booking", (booking) => {
       console.log("UPDATED", booking);
-      setBookings((prevState) => [...prevState, booking]);
-      // setBookings(data);
+
+      updateData();
     });
-    socket.on("remove_booking", () => {
+    socket.on("remove_booking", (data) => {
       console.log(`Socket recieved delete request for ${data}`);
-      setBookings((prevBookings) =>
-        prevBookings.filter((booking) => booking._id !== id)
-      );
+
+      updateData();
     });
     console.log("FIRED!");
 
@@ -71,7 +60,7 @@ function App() {
       socket.off("recieve_booking");
       socket.off("remove_booking");
     };
-  }, [data]);
+  }, [socket]);
 
   /* ----------------------------------------------------------- */
   //Handle view: Changes the view between add bookings and

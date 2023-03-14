@@ -52,9 +52,9 @@ io.on("connection", (socket) => {
     console.log("ADDED", data);
   });
 
-  socket.on("delete_booking", (data) => {
-    socket.broadcast.emit("remove_booking", data);
-    console.log("DELETED", data);
+  socket.on("delete_booking", (id) => {
+    socket.broadcast.emit("remove_booking", id);
+    console.log("DELETED", id);
   });
 });
 
