@@ -30,8 +30,8 @@ function App() {
   useEffect(() => {
     let getDate = dayjs().day();
     let today = getDate++;
-    // setDate(today);
-    setDate(5);
+    setDate(today);
+    // setDate(5);
   }, []);
 
   /* ---------------------------------------------------------- */
