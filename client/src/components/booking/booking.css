@@ -3,8 +3,10 @@
   grid-template-rows: 25px auto;
   min-height: 100px;
   margin: 0 2px 0 2px;
-  border: 1px solid rgb(80, 80, 80);
+  /* border: 1px solid rgb(80, 80, 80); */
   box-shadow: 1px 1px 4px rgb(134, 134, 134);
+  border-radius: 5px;
+  font-family: "Golos Text", sans-serif;
 }
 
 .bookingSlotHeader {
@@ -14,7 +16,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 5px;
-  border-bottom: ridge 2px black;
+  /* border-bottom: solid 2px black; */
   color: white;
   /* width: 100%; */
   font-size: smaller;
@@ -39,6 +41,7 @@
   justify-content: center;
   align-items: center;
   font-size: larger;
+  border-radius: 0 0 5px 5px;
 }
 
 /* -------------------------- */
