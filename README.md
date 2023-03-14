@@ -6,6 +6,8 @@ Book-me-in is a web based booking application / scheduler. It has been created t
 
 ![Screenshot of bookings view](./client/src/assets/book-me-in.png)
 
+![Screenshot of add bookings view](./client/src/assets/book-me-in-add.png)
+
 ## Technologies
 
 The project has been created with:
