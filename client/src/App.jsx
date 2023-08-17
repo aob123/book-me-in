@@ -6,57 +6,60 @@ import axios from "axios";
 import io from "socket.io-client";
 import dayjs from "dayjs";
 
-const socket = io.connect("http://localhost:3000");
+import { socket } from "./socket";
 import AddBookingPage from "./pages/AddBookingPage";
 import BookingPage from "./pages/BookingPage";
 import ClosedPage from "./pages/ClosedPage";
+import useAxios from "./hooks/useAxios";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 function App() {
-  const url = "http://localhost:3000/api/getAll";
-  const [view, setView] = useState(false);
+  // const url = "http://localhost:3000/api/getAll";
+  const url = "http://localhost:3001/api/getAll";
   const [bookings, setBookings] = useState([]);
+  const { data, updateData } = useAxios(url);
+  const [view, setView] = useState(false);
   const [date, setDate] = useState(0);
-
+  console.log(data);
+  console.log(bookings);
   /* ---------------------------------------------------------- */
   //Set date: gets the day of the week (0 - 6)
 
   useEffect(() => {
     let getDate = dayjs().day();
     let today = getDate++;
-    // setDate(today);
     setDate(today);
+    // setDate(5);
   }, []);
+
+  /* ---------------------------------------------------------- */
+  //Set bookings
+  useEffect(() => {
+    setBookings(data);
+  }, [data]);
 
   /* ---------------------------------------------------------- */
   //Socket events
 
   useEffect(() => {
-    //Add new booking
     socket.on("recieve_booking", (booking) => {
       console.log("UPDATED", booking);
-      getData();
-      setBookings((prevState) => [...prevState, booking]);
-    });
 
-    //Delete booking
+      updateData();
+    });
     socket.on("remove_booking", (data) => {
-      let id = data;
       console.log(`Socket recieved delete request for ${data}`);
-      setBookings((prevBookings) =>
-        prevBookings.filter((booking) => booking._id !== id)
-      );
+
+      updateData();
     });
+    console.log("FIRED!");
 
-    //Fetch data
-    const getData = async () => {
-      const response = await axios.get(url);
-      setBookings(response.data);
+    return () => {
+      socket.off("recieve_booking");
+      socket.off("remove_booking");
     };
-
-    getData();
   }, [socket]);
 
   /* ----------------------------------------------------------- */
@@ -93,6 +96,7 @@ function App() {
           categories={categories}
           bookings={bookings}
           date={date}
+          socket={socket}
         />
       ) : (
         <BookingPage
@@ -100,6 +104,7 @@ function App() {
           categories={categories}
           bookings={bookings}
           date={date}
+          socket={socket}
         />
       )}
     </div>

@@ -4,6 +4,7 @@
   display: grid;
   margin-right: 10px;
   height: 100%;
+  /* background-color: rgb(53, 53, 53); */
 }
 
 .bookingsGrid {
@@ -15,6 +16,7 @@
 
 .gridColumn {
   background-color: rgb(246, 246, 246);
+  /* background-color: rgba(246, 246, 246, 0.052); */
   border-radius: 5px;
   display: grid;
 }

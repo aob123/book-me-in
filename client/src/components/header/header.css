@@ -6,13 +6,15 @@ header {
   grid-template-columns: 5fr 95fr;
   position: sticky;
   top: 0;
-  z-index: 0;
+  z-index: 11;
   gap: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
   height: 100px;
+  margin-bottom: 30px;
+  backdrop-filter: blur(20px);
 
-  background-color: transparent;
+  /* background-color: rgb(52, 52, 52); */
 }
 
 .header {
@@ -25,26 +27,44 @@ header {
 }
 
 .header * {
-  font-size: large;
+  /* font-size: large; */
   top: 0;
+  border-radius: 5px;
 }
 
 .headerGridColumn {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   font-size: larger;
+  
+  
+  padding: 10% 0 10% 0;
   box-shadow: 2px 2px 8px rgb(145, 145, 145);
   background-color: rgb(246, 246, 246);
   text-align: center;
   overflow: hidden;
 }
 
-.header * {
-  border-radius: 5px;
+.headerCatName h1 {
+  font-size: 0.8vw;
+  font-weight: 500;
+  color: white;
+  margin-top: 10px;
+}
+
+.headerIcon {
+  display: flex;
+  width: 100px;
+  height: 25px;
+  /* border: 2px solid green; */
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 .headerButton {

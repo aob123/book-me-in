@@ -1,5 +1,4 @@
 import "./header.css";
-import { colors } from "../../settings/Colors";
 
 const Header = ({ categories, handleView }) => {
   return (
@@ -16,10 +15,15 @@ const Header = ({ categories, handleView }) => {
         {categories.map((category, index) => (
           <div
             key={index}
-            style={{ backgroundColor: `${colors[index]}` }}
+            style={{ backgroundColor: `${category.color}` }}
             className={`headerGridColumn column-${index}`}
           >
-            <h1>{category.name}</h1>
+            <div className="headerIcon">
+              <category.icon size="30" color="white" />
+            </div>
+            <div className="headerCatName">
+              <h1>{category.name}</h1>
+            </div>
           </div>
         ))}
       </div>
