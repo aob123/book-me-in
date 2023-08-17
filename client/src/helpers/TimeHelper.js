@@ -45,3 +45,50 @@ export const makeScale = (openhours) => {
 
   return scaleArray;
 };
+
+//Format time
+
+export const formatTime = (timeString) => {
+  let split = timeString.split(":");
+  let hour = split[0];
+  let minute = split[1];
+  let formattedTime = dayjs()
+    .set("hour", hour)
+    .set("minute", minute)
+    .set("second", 0);
+
+  let start = formattedTime;
+  let startHour = start.hour();
+  let startMin = start.minute();
+
+  return { startHour, startMin };
+};
+
+//Calculate end time
+
+export const calcEndTime = (duration, startHour, startMin) => {
+  if (
+    duration === undefined &&
+    startHour === undefined &&
+    startMin === undefined
+  ) {
+    console.log("Not set");
+  } else {
+    let hour = startHour;
+    let minute = startMin;
+    let formattedTime = dayjs()
+      .set("hour", hour)
+      .set("minute", minute)
+      .set("second", 0);
+
+    console.log("START HOUR", startHour, "START MIN", startMin);
+
+    let end = formattedTime.add(duration, "minute");
+    let endHour = end.hour();
+    let endMin = end.minute();
+    console.log("HELPER END", endHour, endMin, end);
+    console.log("DURATION", duration);
+
+    return { endHour, endMin };
+  }
+};

@@ -1,8 +1,11 @@
-import React from "react";
-import { Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { categories } from "../../settings/Categories";
+import { Button, Table } from "react-bootstrap";
 import dayjs from "dayjs";
 
 const bookingListItem = ({ booking, deleteBooking }) => {
+  let color = "#00000";
+
   //Format time
   let start = dayjs()
     .set("hour", booking.start.hour)
@@ -11,18 +14,28 @@ const bookingListItem = ({ booking, deleteBooking }) => {
     .set("hour", booking.end.hour)
     .set("minute", booking.end.min);
 
-  return (
-    <div className="bookingRow">
-      <p>{booking.name}</p>
-      <p>{booking.category.name}</p>
-      <p>{start.format("HH:mm")}</p>
-      <p>{end.format("HH:mm")}</p>
+  for (let cat of categories) {
+    if (booking.category.name === cat.name) {
+      color = cat.color;
+    }
+  }
 
-      <Button>Edit</Button>
-      <Button value={booking._id} onClick={() => deleteBooking(booking._id)}>
-        Delete
-      </Button>
-    </div>
+  return (
+    <tr className="listRow">
+      <td style={{ backgroundColor: `${color}` }}></td>
+      <td>{booking.name}</td>
+      <td>{booking.category.name}</td>
+      <td>{start.format("HH:mm")}</td>
+      <td>{end.format("HH:mm")}</td>
+  
+
+      {/* <Button>Edit</Button> */}
+      <td className="listDelete">
+        <Button value={booking._id} onClick={() => deleteBooking(booking._id)}>
+          Delete
+        </Button>
+      </td>
+    </tr>
   );
 };
 

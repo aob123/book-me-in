@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const mongoose = require("mongoose");
@@ -6,7 +7,10 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 
 //DB Connections
-const mongostring = "mongodb://localhost:27017/bookingDB";
+const mongostring = "mongodb://127.0.0.1/bookingDB";
+
+
+
 mongoose.set("strictQuery", false);
 mongoose.connect(mongostring);
 const database = mongoose.connection;
@@ -22,6 +26,7 @@ database.once("connected", () => {
 //Server connection
 const app = express();
 
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
 
@@ -29,14 +34,14 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
-    // origin: "http://localhost:4173",
+    origin: "*",
+    // origin: "http://localhost:5174",
     methods: ["GET", "POST", "DELETE"],
   },
 });
 
-server.listen(3000, () => {
-  console.log(`Server is running on port ${3000}... `);
+server.listen(3001, () => {
+  console.log(`Server is running on port ${3001}... `);
 });
 
 //EVENTS
@@ -45,12 +50,12 @@ io.on("connection", (socket) => {
 
   socket.on("add_booking", (data) => {
     socket.broadcast.emit("recieve_booking", data);
-    console.log("DATA", data);
+    console.log("ADDED", data);
   });
 
-  socket.on("delete_booking", (data) => {
-    socket.broadcast.emit("remove_booking", data);
-    console.log("DELETED", data);
+  socket.on("delete_booking", (id) => {
+    socket.broadcast.emit("remove_booking", id);
+    console.log("DELETED", id);
   });
 });
 

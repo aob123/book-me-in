@@ -1,22 +1,49 @@
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
 import BookingListItem from "./bookingListItem";
+import { Table } from "react-bootstrap";
 import axios from "axios";
+import { io } from "socket.io-client";
+const URL = "http://127.0.0.1:3001";
+const socket = io(URL);
 
 const BookingsList = ({ bookings }) => {
   const deleteBooking = async (id) => {
-    const response = await axios.delete(
-      `http://localhost:3000/api/delete/${id}`
-    );
+    try {
+      const response = await axios.delete(
+        `http://localhost:3001/api/delete/${id}`
+      );
 
-    socket.emit("delete_booking", id);
+      socket.emit("delete_booking", id);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   /*  ---------------------------------------------------------- */
 
   return (
     <div className="bookingList">
-      <div className="brHeader">
+      <Table hover>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Start</th>
+            <th>End</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {bookings.map((booking, index) => (
+            <BookingListItem
+              booking={booking}
+              key={index}
+              deleteBooking={deleteBooking}
+            />
+          ))}
+        </tbody>
+      </Table>
+      {/* <div className="brHeader">
         <p>Name</p>
         <p>Category</p>
         <p>Start</p>
@@ -33,7 +60,7 @@ const BookingsList = ({ bookings }) => {
             deleteBooking={deleteBooking}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

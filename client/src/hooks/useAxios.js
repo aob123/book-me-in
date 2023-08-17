@@ -21,9 +21,18 @@ const useAxios = (url) => {
     getData();
   }, [url]);
 
-  // console.log("DATA HOOK", data);
+  const updateData = async () => {
+    try {
+      const response = await axios.get(url);
+      setData(response.data);
+    } catch (error) {
+      setErrror(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  return { data, error, loading };
+  return { data, error, loading, updateData };
 };
 
 export default useAxios;

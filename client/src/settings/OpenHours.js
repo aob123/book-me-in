@@ -2,23 +2,23 @@ export const OpenHours = [
   {
     day: "Sunday",
     open: {
-      hour: null,
-      minute: null,
+      hour: 0,
+      minute: 0,
     },
     close: {
-      hour: null,
-      minute: null,
+      hour: 23,
+      minute: 0,
     },
   },
   {
     day: "Monday",
     open: {
-      hour: null,
-      minute: null,
+      hour: 12,
+      minute: 0,
     },
     close: {
-      hour: null,
-      minute: null,
+      hour: 23,
+      minute: 0,
     },
   },
   {

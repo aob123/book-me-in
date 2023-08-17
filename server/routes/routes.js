@@ -10,7 +10,7 @@ dayjs.extend(customParseFormat);
 //Set todays date, and set hours and minutes to 0
 const d = new Date();
 const today = dayjs().set("hour", "0").set("minute", "0");
-console.log(today);
+
 
 //Post Method
 router.post("/post", async (req, res) => {
@@ -37,7 +37,7 @@ router.get("/getAll", async (req, res) => {
         $gte: today,
       },
     });
-    console.log(bookings);
+    // console.log("GET ALL", bookings);
     res.json(bookings);
   } catch (error) {
     res.status(500).json({ message: error.message });
