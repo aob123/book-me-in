@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
+import { formatTime, calcEndTime } from "../../helpers/TimeHelper";
+import { Button, Form } from "react-bootstrap";
+import { io } from "socket.io-client";
 import axios from "axios";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
-import { formatTime, calcEndTime } from "../../helpers/TimeHelper";
 import "./addbooking.css";
-import { Button, Form } from "react-bootstrap";
-import { io } from "socket.io-client";
-dayjs.extend(isBetween);
 const URL = "http://127.0.0.1:3001";
 const socket = io(URL);
+dayjs.extend(isBetween);
 
-const AddBookings = ({ categories, bookings }) => {
+const AddBookings = ({ categories }) => {
   const [time, setTime] = useState("");
   const [booking, setBooking] = useState({
     name: "",
@@ -18,13 +18,10 @@ const AddBookings = ({ categories, bookings }) => {
     start: { hour: undefined, min: undefined },
     end: { hour: undefined, min: undefined },
   });
-  // const [name, setName] = useState("");
-  // const [category, setCategory] = useState({ name: "", duration: undefined });
-  // const [start, setStart] = useState({ hour: undefined, min: undefined });
-  // const [end, setEnd] = useState({ hour: undefined, min: undefined });
 
   /*  ---------------------------------------------------------- */
 
+  //Update state so that correct end time is calculated for the booking
   useEffect(() => {
     calculateTime(
       booking.category.duration,
@@ -35,6 +32,7 @@ const AddBookings = ({ categories, bookings }) => {
     console.log("USEEFFECT", booking);
   }, [booking.start, booking.category]);
 
+  //Add the booking to DB
   const addToDB = async (booking) => {
     try {
       const response = await axios.post(
@@ -42,10 +40,7 @@ const AddBookings = ({ categories, bookings }) => {
         booking
       );
       console.log("Added to db");
-      // setName("");
-      // setCategory({ name: "", duration: undefined });
-      // setStart({});
-      // setEnd({});
+
       setBooking({
         name: "",
         category: { name: "", duration: undefined },
@@ -69,7 +64,6 @@ const AddBookings = ({ categories, bookings }) => {
   //Handlers for inputs
 
   const handleName = (e) => {
-    // setName(e.target.value);
     setBooking({ ...booking, name: e.target.value });
   };
 
@@ -79,7 +73,6 @@ const AddBookings = ({ categories, bookings }) => {
       //For each category, check if the target value mathces the category
       if (e.target.value === item.name) {
         //Set the cateogry
-        // setCategory({ name: item.name, duration: item.duration });
         setBooking({
           ...booking,
           category: { name: item.name, duration: item.duration },
@@ -109,27 +102,10 @@ const AddBookings = ({ categories, bookings }) => {
     }
   };
 
-  // console.log("STATES", name, category, start, end);
-
   //Submit handler
 
   const handleAddBooking = (e) => {
     e.preventDefault();
-
-    // let booking = {
-    //   name: name,
-    //   category: {
-    //     name: category.name,
-    //     duration: category.duration,
-    //   },
-    //   start: {
-    //     hour: start.hour,
-    //     min: start.min,
-    //   },
-    //   end: { hour: end.hour, min: end.min },
-    // };
-
-    console.log("BOOK!€!€!€", booking);
 
     //Validate all fields have been filled
     if (
