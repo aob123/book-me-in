@@ -55,6 +55,10 @@ This project is under development and has reached the stage where it works. The 
 - Booking validation, currently not implemented which means two or more bookings can be made at the same time.
 - Seperate page to edit settings (add/remove categories and adjust open hours)
 
+Update 2023-08-17
+
+- Bugfix
+
 ## Sources
 
 All things have a source of inspiration and in the case of this project the main inspiration is [Pantburk](https://github.com/indianpojken/pantburk), check it out!
