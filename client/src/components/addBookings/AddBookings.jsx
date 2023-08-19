@@ -85,9 +85,7 @@ const AddBookings = ({ categories }) => {
     let timeString = e.target.value;
     setTime(timeString);
     let { startHour, startMin } = formatTime(timeString);
-    // setStart({ hour: startHour, min: startMin });
     setBooking({ ...booking, start: { hour: startHour, min: startMin } });
-    // calculateTime(category.duration, startHour, startMin);
   };
 
   /*  ---------------------------------------------------------- */
@@ -95,7 +93,6 @@ const AddBookings = ({ categories }) => {
   const calculateTime = (duration, startHour, startMin) => {
     if (startHour !== undefined && duration !== undefined) {
       let { endHour, endMin } = calcEndTime(duration, startHour, startMin);
-      // setEnd({ hour: endHour, min: endMin });
       setBooking({ ...booking, end: { hour: endHour, min: endMin } });
     } else {
       console.log("Can not set end time");
