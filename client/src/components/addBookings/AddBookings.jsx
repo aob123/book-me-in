@@ -118,10 +118,9 @@ const AddBookings = ({ categories }) => {
       setBooking({ ...booking, start: { hour: undefined, min: undefined } });
       return;
     } else if (
-      //Prevents booking before opening hour and no later than 15 mins before closing hour
+      //Prevents bookings being made before opening and after closing
       booking.start.hour < currentDay()[0].open.hour ||
-      (booking.end.hour > currentDay()[0].close.hour - 1 &&
-        booking.end.min > 45)
+      booking.start.hour >= currentDay()[0].close.hour
     ) {
       alert(
         `Please enter a time within opening hours - (${
