@@ -18,5 +18,14 @@
 }
 
 .clock {
-  padding: 25px;
+  /* padding: 25px; */
+  width: 10%;
+  /* background-color: red; */
+  text-align: left;
+}
+
+.clock h3 {
+  margin: 25px;
+  width: 100%;
+  text-align: left;
 }

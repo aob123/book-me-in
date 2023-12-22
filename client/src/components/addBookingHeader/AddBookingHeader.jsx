@@ -17,7 +17,9 @@ const AddBookingHeader = ({ handleView, date }) => {
       <Button onClick={handleView}>Back</Button>
 
       <h3>{dayjs().set("day", date).format("dddd")}</h3>
-      <h3 className="clock">{clock}</h3>
+      <div className="clock">
+        <h3>{clock}</h3>
+      </div>
     </div>
   );
 };
