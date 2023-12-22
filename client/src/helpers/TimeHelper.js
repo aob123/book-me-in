@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import { OpenHours } from "../settings/OpenHours";
 
 export default function TimeHelper() {
   const date = dayjs();
@@ -8,6 +9,32 @@ export default function TimeHelper() {
 
   return { hours, minutes, seconds, date };
 }
+
+//Return current day
+export const currentDay = () => {
+  const day = dayjs().day();
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+  let today = [];
+
+  for (let i = 0; i < days.length; i++) {
+    if (i === day) {
+      today.push(OpenHours[i]);
+      return today;
+    } else {
+      console.log("Days are not the same");
+    }
+  }
+
+  return today;
+};
 
 //Get list of every open hour (per day) and the amount of open hours.
 export const openHours = (day) => {

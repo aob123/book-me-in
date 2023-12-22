@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { formatTime, calcEndTime } from "../../helpers/TimeHelper";
+import { formatTime, calcEndTime, currentDay } from "../../helpers/TimeHelper";
 import { Button, Form } from "react-bootstrap";
 import { io } from "socket.io-client";
 import axios from "axios";
@@ -114,7 +114,25 @@ const AddBookings = ({ categories }) => {
       booking.start.hour === undefined ||
       booking.start.min === undefined
     ) {
-      alert("Please enter start time");
+      alert("Please enter a valid start time");
+      setBooking({ ...booking, start: { hour: undefined, min: undefined } });
+      return;
+    } else if (
+      //Prevents booking before opening hour and no later than 15 mins before closing hour
+      booking.start.hour < currentDay()[0].open.hour ||
+      (booking.end.hour > currentDay()[0].close.hour - 1 &&
+        booking.end.min > 45)
+    ) {
+      alert(
+        `Please enter a time within opening hours - (${
+          currentDay()[0].open.hour
+        } to ${currentDay()[0].close.hour})`
+      );
+      setBooking({
+        ...booking,
+        start: { hour: undefined, min: undefined },
+        end: { hour: undefined, min: undefined },
+      });
     } else if (booking.name === "") {
       alert("Please enter name");
     } else {
