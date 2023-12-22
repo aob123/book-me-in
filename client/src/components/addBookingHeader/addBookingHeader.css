@@ -12,4 +12,11 @@
 
 .addBookingHeader h3 {
   margin: 0;
+  min-width: 15vw;
+  text-align: center;
+  /* padding: 25px; */
+}
+
+.clock {
+  padding: 25px;
 }
