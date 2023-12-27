@@ -1,0 +1,18 @@
+.editBookingView {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(5px);
+  background-color: rgba(95, 95, 95, 0.641);
+  padding: 10% 30% 20% 30%;
+}
+
+.editModal {
+  background-color: white;
+  padding: 40px;
+  border: 1px solid rgb(183, 183, 183);
+  border-radius: 5px;
+  box-shadow: 12px 12px 10px rgba(128, 128, 128, 0.484);
+}

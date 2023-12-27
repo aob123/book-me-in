@@ -119,3 +119,20 @@ export const calcEndTime = (duration, startHour, startMin) => {
     return { endHour, endMin };
   }
 };
+
+export const convertTimeToString = (hour, min) => {
+  let h = "";
+  let m = "";
+
+  if (min == 0) {
+    m = "00";
+  } else if (min > 0) {
+    m = min;
+  }
+
+  h = hour;
+
+  let timeString = `${h}:${m}`;
+
+  return { timeString };
+};

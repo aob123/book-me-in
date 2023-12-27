@@ -30,3 +30,7 @@ td {
   display: flex;
   justify-content: flex-end;
 }
+
+.btn {
+  margin: 5px;
+}

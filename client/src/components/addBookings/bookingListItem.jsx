@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { categories } from "../../settings/Categories";
 import { Button, Table } from "react-bootstrap";
 import dayjs from "dayjs";
 
-const bookingListItem = ({ booking, deleteBooking }) => {
+const BookingListItem = ({ booking, deleteBooking, handleEdit }) => {
   let color = "#00000";
+
+  useEffect(() => {
+    console.log(booking);
+  }, [booking]);
 
   //Format time
   let start = dayjs()
@@ -27,16 +31,18 @@ const bookingListItem = ({ booking, deleteBooking }) => {
       <td>{booking.category.name}</td>
       <td>{start.format("HH:mm")}</td>
       <td>{end.format("HH:mm")}</td>
-  
 
       {/* <Button>Edit</Button> */}
       <td className="listDelete">
         <Button value={booking._id} onClick={() => deleteBooking(booking._id)}>
           Delete
         </Button>
+        <Button value={booking._id} onClick={() => handleEdit(booking._id)}>
+          Edit
+        </Button>
       </td>
     </tr>
   );
 };
 
-export default bookingListItem;
+export default BookingListItem;

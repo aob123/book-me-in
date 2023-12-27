@@ -14,7 +14,11 @@ const AddBookingPage = ({ handleView, categories, bookings, date, socket }) => {
           bookings={bookings}
           socket={socket}
         />
-        <BookingsList bookings={bookings} socket={socket} />
+        <BookingsList
+          bookings={bookings}
+          socket={socket}
+          categories={categories}
+        />
       </section>
     </main>
   );

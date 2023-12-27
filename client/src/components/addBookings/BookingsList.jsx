@@ -1,11 +1,16 @@
-import BookingListItem from "./bookingListItem";
+import { useState } from "react";
+import BookingListItem from "./BookingListItem";
 import { Table } from "react-bootstrap";
 import axios from "axios";
 import { io } from "socket.io-client";
+import EditBooking from "../editBooking/EditBooking";
 const URL = "http://127.0.0.1:3001";
 const socket = io(URL);
 
-const BookingsList = ({ bookings }) => {
+const BookingsList = ({ bookings, categories }) => {
+  const [showEdit, setShowEdit] = useState(false);
+  const [bookingId, setBookingId] = useState("");
+
   const deleteBooking = async (id) => {
     try {
       const response = await axios.delete(
@@ -18,49 +23,55 @@ const BookingsList = ({ bookings }) => {
     }
   };
 
+  const handleEdit = (id) => {
+    setShowEdit(!showEdit);
+    setBookingId(id);
+    console.log(id);
+  };
+
   /*  ---------------------------------------------------------- */
 
   return (
     <div className="bookingList">
-      <Table hover>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Start</th>
-            <th>End</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {bookings.map((booking, index) => (
-            <BookingListItem
-              booking={booking}
-              key={index}
-              deleteBooking={deleteBooking}
-            />
-          ))}
-        </tbody>
-      </Table>
-      {/* <div className="brHeader">
-        <p>Name</p>
-        <p>Category</p>
-        <p>Start</p>
-        <p>End</p>
-      </div>
-      <div
-        className="list"
-        style={{ gridTemplateRows: `repeat(${bookings.length}, 100px` }}
-      >
-        {bookings.map((booking, index) => (
-          <BookingListItem
-            booking={booking}
-            key={index}
-            deleteBooking={deleteBooking}
-          />
-        ))}
-      </div> */}
+      {showEdit ? (
+        <EditBooking
+          bookingId={bookingId}
+          handleEdit={handleEdit}
+          categories={categories}
+          bookings={bookings}
+        />
+      ) : (
+        <Table hover>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Start</th>
+              <th>End</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {bookings
+              // .sort((a, b) => (a.category.name > b.category.name ? 1 : -1))
+              .sort((a, b) => (a.category.name > b.category.name ? 1 : -1))
+              // .sort(
+              //   (a, b) => a.category.name - b.category.name
+              //   a.start.hour - b.start.hour
+              // )
+
+              .map((booking, index) => (
+                <BookingListItem
+                  booking={booking}
+                  key={index}
+                  deleteBooking={deleteBooking}
+                  handleEdit={handleEdit}
+                />
+              ))}
+          </tbody>
+        </Table>
+      )}
     </div>
   );
 };

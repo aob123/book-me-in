@@ -2,11 +2,11 @@ export const OpenHours = [
   {
     day: "Sunday",
     open: {
-      hour: 0,
+      hour: 15,
       minute: 0,
     },
     close: {
-      hour: 23,
+      hour: 21,
       minute: 0,
     },
   },

@@ -38,7 +38,7 @@ function App() {
   //Set bookings
   useEffect(() => {
     setBookings(data);
-  }, [data]);
+  }, [data, bookings]);
 
   /* ---------------------------------------------------------- */
   //Socket events
