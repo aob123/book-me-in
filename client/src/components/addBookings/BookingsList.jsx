@@ -54,7 +54,6 @@ const BookingsList = ({ bookings, categories }) => {
           </thead>
           <tbody>
             {bookings
-              // .sort((a, b) => (a.category.name > b.category.name ? 1 : -1))
               .sort((a, b) => (a.category.name > b.category.name ? 1 : -1))
               // .sort(
               //   (a, b) => a.category.name - b.category.name
