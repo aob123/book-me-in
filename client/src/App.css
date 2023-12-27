@@ -88,3 +88,37 @@ Button {
   width: 100vw;
   z-index: 1;
 }
+
+@media only screen and (max-width: 900px) {
+  body {
+    /* background-color: lightblue; */
+  }
+
+  .add-bookings section {
+    width: 100%;
+    /* display: grid; */
+    /* grid-template-columns: 33% 67%; */
+    /* grid-template-rows: 40% 60%; */
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .addBookingSection {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    /* width: 100%; */
+    /* display: grid; */
+    /* grid-template-rows: 10% 90%; */
+    /* height: 90vh; */
+    /* padding-top: 0; */
+    /* padding: 2.5rem; */
+    border-right: 2px solid rgb(182, 182, 182);
+  }
+
+  .addBookingSection form {
+    width: 100%;
+    /* grid-row: 2 / 3; */
+  }
+}
